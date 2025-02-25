@@ -5,6 +5,8 @@ from django.contrib import admin
 
 from vote import urls
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('vote.urls')),
