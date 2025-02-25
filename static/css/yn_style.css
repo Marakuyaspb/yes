@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", serif!important;
+  font-weight: 300;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+.wrap_yesno {
+  margin: -30em 0 0 0;
+  position: relative;
+  z-index: 110;
+}
+
+.wrap_content {
+  margin: -30em auto 0 auto;
+  max-width: 70%;
+  position: relative;
+  z-index: 110;
+}
+
+
+
+.footer_link{
+  margin: 1.4em;
+  color: #000;
+}
+
+
+
+.btn-main{
+
+}
+
+.btn-vote {
+
+}
+
+.btn-y{
+
+}
+
+.btn-y{
+
+}
+
+
+
+/*  */ /*  */ /*  */ /*  */ /*  */ /*  */
+/*  */ /*  */ /*  */ /*  */ /*  */ /*  */
+/*  */ /*   DIFFERENT SCREENS   */ /*  */
+/*  */ /*  */ /*  */ /*  */ /*  */ /*  */
+/*  */ /*  */ /*  */ /*  */ /*  */ /*  */
+
+
+/* PHONE & TABLET */
+
+@media (max-width: 810px) {
+
+
+}
+
+
+
+/* DESCTOP */
+
+@media (min-width: 811px) {
+  
+
+}

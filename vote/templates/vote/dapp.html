@@ -1,0 +1,26 @@
+{% extends 'vote/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+ <!-- Connect wallet -->
+{% include 'humsters/auth.html' %}
+
+<div class="wrap_yesno d-flex justify-content-center py-5">
+
+	<form method="POST">
+
+		{% csrf_token %}
+		<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-vote btn-y'>YES</button>
+
+		<button type="submit" name="voice"  value="False" id='btn-n' class='ms-2 btn-vote btn-n'>NO</button>
+		
+	</form>
+	
+</div>
+	
+{% include 'humsters/auth.html' %}
+
+{% endblock %}

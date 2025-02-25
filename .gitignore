@@ -1,0 +1,8 @@
+yesno/.env
+db.sqlite3
+
+static/admin/*
+static/bootstrap-5.0.2-dist/*
+
+vote/migrations/*
+humsters/migrations/*

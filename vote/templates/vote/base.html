@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <link rel="shortcut icon" type="image/png" href="{% static 'imgs/favicon.png' %}" >
+	<link rel="stylesheet" href="{% static 'bootstrap-5.0.2-dist/css/bootstrap.min.css' %}" type="text/css">
+	
+  <link rel='stylesheet' href='{% static "css/yn_style.css" %}' type='text/css'>
+  <link rel='stylesheet' href='{% static "css/bg_animation.css" %}' type='text/css'>
+  <link rel='stylesheet' href='{% static "css/connect.css" %}' type='text/css'>
+
+
+	<title>
+	{% block title %} YES or NO {% endblock %}
+	</title>
+</head>
+
+<body>
+
+<div class="gradient-bg">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="gradients-container">
+    <div class="g1"></div>
+    <div class="g2"></div>
+    <div class="g3"></div>
+    <div class="g4"></div>
+    <div class="g5"></div>
+    <div class="interactive"></div>
+  </div>
+</div>
+
+
+
+
+
+{% block content %}
+{% endblock %}
+
+
+
+<footer class='fixed-bottom'> 
+	
+  <div class=''>
+	  <div class="d-flex justify-content-center py-1">
+	  	<a class="footer_link" href='{% url "vote:index" %}'>Main</a>
+	  	<a class="footer_link" href='{% url "vote:dapp" %}'>YES or NO?</a>
+	    <a class="footer_link" href='{% url "vote:about" %}'>About</a>
+	    <a class="footer_link" href='{% url "vote:howwas" %}'>Statistics</a>
+
+	  </div>
+  </div>
+
+	<center>
+	
+		<p class='copyright pt-5'>© 2024, YES or NO </p>
+
+	</center>
+</footer>
+	
+
+<script src='{% static "bootstrap-5.0.2-dist/js/bootstrap.js" %}'></script>	
+<script src="{% static 'js/bg_move_script.js' %}"></script> 
+
+
+
+</body>
+</html>
