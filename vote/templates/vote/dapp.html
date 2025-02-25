@@ -8,19 +8,50 @@
  <!-- Connect wallet -->
 {% include 'humsters/auth.html' %}
 
+
+<link rel='stylesheet' href='{% static "css/yesno_btns.css" %}' type='text/css'>
+
+
+
 <div class="wrap_yesno d-flex justify-content-center py-5">
 
 	<form method="POST">
 
 		{% csrf_token %}
-		<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-vote btn-y'>YES</button>
+		<!-- <button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-vote btn-y'>YES</button> -->
 
-		<button type="submit" name="voice"  value="False" id='btn-n' class='ms-2 btn-vote btn-n'>NO</button>
+		<div class="button btn-y">
+			<div type="submit" name="voice"  value="True" id='btn-y' class='me-2 text-y'>YES</div>
+		</div>
+
+		<div class="progress-bar-y"></div>
+		<svg x="0px" y="0px"
+		viewBox="0 0 25 30" style="enable-background:new 0 0 25 30;">
+		<path class="check-y" class="st0" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
+		</svg>
+
+
+
+		<div class="button btn-n">
+			<div type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 text-n'>NO</div>
+		</div>
+		<div class="progress-bar-n"></div>
+		<svg x="0px" y="0px"
+		 viewBox="0 0 25 30" style="enable-background:new 0 0 25 30;">
+		<path class="check-n" class="st0" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
+		</svg>
+
+		
 		
 	</form>
 	
 </div>
 	
-{% include 'humsters/auth.html' %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script> 
+<script src="{% static 'js/yesno_btns.js' %}"></script> 
+
 
 {% endblock %}

@@ -6,3 +6,5 @@ static/bootstrap-5.0.2-dist/*
 
 vote/migrations/*
 humsters/migrations/*
+yesno/__pycache__/*
+vote/__pycache__/*
