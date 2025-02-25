@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'web3auth.apps.Web3AuthConfig',
+
     'humsters.apps.HumstersConfig',
     'vote.apps.VoteConfig',
 ]
@@ -60,8 +62,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'yesno.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -70,9 +70,13 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'web3auth.backend.Web3Backend'
+]
 
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+WEB3AUTH_USER_ADDRESS_FIELD = 'username'
+WEB3AUTH_USER_SIGNUP_FIELDS = ['email',]
 
 AUTH_PASSWORD_VALIDATORS = [
     {

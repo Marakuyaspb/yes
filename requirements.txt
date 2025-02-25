@@ -1,6 +1,3 @@
 dotenv
 
-eth-account==0.5.9
-names==0.3.0
-web3==5.30.0
-shortuuid==1.0.9
+django-web3-auth

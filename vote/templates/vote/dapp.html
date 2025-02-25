@@ -9,33 +9,9 @@
 {% include 'humsters/auth.html' %}
 
 
-<link rel='stylesheet' href='{% static "css/yesno_btns.css" %}' type='text/css'>
-
-
-
-<div class="wrap_yesno d-flex justify-content-center py-5">
-
-	<form method="POST">
-
-		{% csrf_token %}
-
-		<div class="d-flex justify-content-center">
-
-			<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-y'>YES</button>
-
-			<button type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 btn-n'>NO</button>
-		</div>
-
-		
-	</form>
+<!-- Form with buttons -->
+{% include 'vote/components/voting_form.html' %}
 	
-</div>
-	
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script> 
-<script src="{% static 'js/yesno_btns.js' %}"></script> 
 
 
 {% endblock %}
