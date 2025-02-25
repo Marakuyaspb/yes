@@ -18,30 +18,14 @@
 	<form method="POST">
 
 		{% csrf_token %}
-		<!-- <button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-vote btn-y'>YES</button> -->
 
-		<div class="button btn-y">
-			<div type="submit" name="voice"  value="True" id='btn-y' class='me-2 text-y'>YES</div>
+		<div class="d-flex justify-content-center">
+
+			<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-y'>YES</button>
+
+			<button type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 btn-n'>NO</button>
 		</div>
 
-		<div class="progress-bar-y"></div>
-		<svg x="0px" y="0px"
-		viewBox="0 0 25 30" style="enable-background:new 0 0 25 30;">
-		<path class="check-y" class="st0" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
-		</svg>
-
-
-
-		<div class="button btn-n">
-			<div type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 text-n'>NO</div>
-		</div>
-		<div class="progress-bar-n"></div>
-		<svg x="0px" y="0px"
-		 viewBox="0 0 25 30" style="enable-background:new 0 0 25 30;">
-		<path class="check-n" class="st0" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
-		</svg>
-
-		
 		
 	</form>
 	
