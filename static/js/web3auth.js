@@ -1,5 +1,4 @@
 function web3Login() {
-    /* Подписываем сообщение */
     try {
         window.ethereum.enable().then(function () {
             provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -23,7 +22,7 @@ function web3Login() {
 function web3LoginBackend(accountAddress, signature) {
     /* Отправляем данные на django view */
     var form = document.createElement('form');
-    form.action = '{% url "main:auth_web3" %}'; // TODO замените на свой адрес
+    form.action = '{% url "humsters:auth_web3" %}'; // TODO замените на свой адрес
     form.method = 'POST';
  
     var input = document.createElement('input');
