@@ -1,4 +1,10 @@
-<div class="wrap_yesno d-flex justify-content-center py-5">
+{% load static %}
+
+<link rel='stylesheet' href='{% static "css/yesno_bnts.css" %}' type='text/css'>
+
+
+
+<div class="wrap_yesno py-5">
 
 	<form method="POST">
 
@@ -6,9 +12,9 @@
 
 		<div class="d-flex justify-content-center">
 
-			<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-y'>YES</button>
+			<button type="submit" name="voice"  value="True" id='btn-y' class='me-4 btn-y button'>YES</button>
 
-			<button type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 btn-n'>NO</button>
+			<button type="submit" name="voice"  value="False" id='btn-n' class='ms-4 btn-n button'>NO</button>
 		</div>
 
 		
