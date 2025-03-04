@@ -1,17 +1,18 @@
-<div class="wrap_yesno d-flex justify-content-center py-5">
+{% load static %}
 
-	<form method="POST">
+<link rel='stylesheet' href='{% static "css/yesno_bnts.css" %}' type='text/css'>
 
+
+<div class="wrap_yesno py-5">
+	<form method="POST" id="voting_form">
 		{% csrf_token %}
-
+		<input type="hidden" id="voting_address_input" name="address">
 		<div class="d-flex justify-content-center">
+			<button onclick="Vote()" type="submit" name="voice"  value="True" id='yes' class='me-4 btn-y button'>YES</button>
 
-			<button type="submit" name="voice"  value="True" id='btn-y' class='me-2 btn-y'>YES</button>
-
-			<button type="submit" name="voice"  value="False" id='btn-n ' class='ms-2 btn-n'>NO</button>
-		</div>
-
-		
+			<button onclick="Vote()" type="submit" name="voice"  value="False" id='no' class='ms-4 btn-n button'>NO</button>
+		</div>	
 	</form>
-	
-</div>
+</div>	
+
+<script src="{% static 'js/vote.js' %}"></script> 

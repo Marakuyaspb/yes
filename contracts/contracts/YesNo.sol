@@ -1,5 +1,13 @@
+/**
+ * Created on 2025-02-28 11:37
+ * @summary: 
+ * @author: aa
+ */
 pragma solidity >=0.4.22 <0.9.0;
 
+/**
+ * @title: Yes or No?
+ */
 contract YesNo {
     struct Variant {
         uint id;
