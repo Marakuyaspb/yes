@@ -11,6 +11,4 @@ urlpatterns = [
     path('', views.index, name = 'index'),
     path('about/', views.about, name = 'about'),
     path('howwas/', views.howwas, name = 'howwas'),
-    re_path(r'^api/students/$', views.students_list),
-    re_path(r'^api/students/(\d+)$', views.students_detail),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

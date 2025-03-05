@@ -24,12 +24,11 @@ a {
 
 #connect_section{
   position: absolute;
-  top:1%;
-  right: 5%;
-  z-index: 1111;
+  top:2%;
+  right:2%;
+  margin: .5em 1em;
+  z-index: 111;
 }
-
-
 
 .wrap_yesno {
   margin: -30em 0 0 0;
