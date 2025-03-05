@@ -3,6 +3,8 @@ import os, sys
 from dotenv import load_dotenv
 from django.contrib.messages import constants as messages
 
+
+
 env_path = Path('.') / '.env'
 load_dotenv(dotenv_path=env_path)
 
@@ -15,7 +17,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,10 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'web3auth.apps.Web3AuthConfig',
+    'rest_framework',
+    'corsheaders',
 
-    'humsters.apps.HumstersConfig',
-    'vote.apps.VoteConfig',
+    'vote',
 ]
 
 MIDDLEWARE = [
@@ -39,9 +40,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'yesno.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -70,13 +76,6 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'web3auth.backend.Web3Backend'
-]
-
-WEB3AUTH_USER_ADDRESS_FIELD = 'username'
-WEB3AUTH_USER_SIGNUP_FIELDS = ['email',]
 
 AUTH_PASSWORD_VALIDATORS = [
     {

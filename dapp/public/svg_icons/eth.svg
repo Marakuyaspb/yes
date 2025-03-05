@@ -1,0 +1,46 @@
+<svg
+   width="25.999998"
+   height="25.999998"
+   fill="none"
+   viewBox="0 0 25.999998 25.999998"
+>
+  <path
+     d="M 13,25.999999 C 20.179249,25.999999 25.999999,20.179249 25.999999,13 25.999999,5.8207498 20.179249,0 13,0 5.8207498,0 0,5.8207498 0,13 0,20.179249 5.8207498,25.999999 13,25.999999 Z"
+     fill="#627eea"
+     id="path1"
+     style="stroke-width:1" />
+  <path
+     d="m 13.404083,3.2499999 v 7.2063331 l 6.091583,2.722417 -6.0905,-9.9287501 z"
+     fill="#ffffff"
+     fill-opacity="0.602"
+     id="path2"
+     style="stroke-width:1" />
+  <path
+     d="M 13.404083,3.2499999 7.3124998,13.17875 13.404083,10.457416 Z"
+     fill="#ffffff"
+     id="path3"
+     style="stroke-width:1" />
+  <path
+     d="m 13.404083,17.848999 v 4.896667 L 19.499999,14.313 Z"
+     fill="#ffffff"
+     fill-opacity="0.602"
+     id="path4"
+     style="stroke-width:1" />
+  <path
+     d="M 13.404083,22.745666 V 17.848999 L 7.3124998,14.311916 13.404083,22.744583 Z"
+     fill="#ffffff"
+     id="path5"
+     style="stroke-width:1" />
+  <path
+     d="m 13.404083,16.715833 6.091583,-3.537083 -6.0905,-2.72025 v 6.257333 z"
+     fill="#ffffff"
+     fill-opacity="0.2"
+     id="path6"
+     style="stroke-width:1" />
+  <path
+     d="m 7.3124998,13.17875 6.0915832,3.537083 V 10.4585 Z"
+     fill="#ffffff"
+     fill-opacity="0.602"
+     id="path7"
+     style="stroke-width:1" />
+</svg>

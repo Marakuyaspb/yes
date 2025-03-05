@@ -1,7 +1,21 @@
 import os
+from django.conf import settings
 from django.utils import timezone
 from django.shortcuts import render
+
+from django.shortcuts import render
+from django.db import connection
+from django.db.models import Count
+from .models import Web3User, Voting
 from .forms import VotingForm
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+import sqlite3
+import json
+
+
 
 
 def dapp(request):
@@ -28,8 +42,39 @@ def dapp(request):
 def about(request):
 	return render(request, 'vote/about.html')
 	
+
+
+
 def howwas(request):
-	return render(request, 'vote/howwas.html')
+    # Путь к базе данных SQLite
+    db_path = os.path.join(settings.BASE_DIR, 'db.sqlite3')
+    
+    # Подключение к базе данных
+    conn = sqlite3.connect(db_path)
+    
+    # Чтение данных из таблицы vote_voting
+    query = "SELECT voice FROM vote_voting"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    
+    # Получение всех голосов
+    votes = cursor.fetchall()
+    conn.close()
+
+    # Подсчет голосов
+    vote_counts = {
+        'Yes': sum(1 for v in votes if v[0] == True),
+        'No': sum(1 for v in votes if v[0] == False)
+    }
+
+    # Преобразование данных в формат JSON для передачи в шаблон
+    data = json.dumps(vote_counts)
+
+    return render(request, 'vote/howwas.html', {'data': data})
+
+  
 
 def index(request):
 	return render(request, 'vote/index.html')
+
+	
