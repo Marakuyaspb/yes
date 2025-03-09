@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WalletConnect from "./WalletConnect/WalletConnect.js";
+import Voting from "./Voting.js";
 import Footer from "./Footer/Footer.js";
 
 
@@ -39,8 +40,6 @@ function App() {
   return (
     <div className="App">
 
-     
-
 
       <div className="gradient-bg">
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -64,8 +63,11 @@ function App() {
 
 
       <WalletConnect />
+
+      <Voting />
       
       <Footer />
+      
     </div>
   );
 }

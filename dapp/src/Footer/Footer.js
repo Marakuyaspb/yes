@@ -11,7 +11,7 @@ function Footer() {
 					<a class="footer_link" href='#'>Main</a>
 					<a class="footer_link" href='#'>YES or NO?</a>
 					<a class="footer_link" href='#'>About</a>
-					<a class="footer_link" href='#'>Statistics</a>
+					<a class="footer_link" href='http://127.0.0.1:8000/howwas/'>Statistics</a>
 				</div>
 			</div>
 
