@@ -1,79 +1,144 @@
-import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ethers } from 'ethers';
-import { YesNoContract } from './contractConfig';
-
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ethers } from "ethers";
+import { YesNoContract } from "./contractConfig";
 
 const Voting = () => {
-	const [provider, setProvider] = useState(null);
-	const [signer, setSigner] = useState(null);
-	const [contract, setContract] = useState(null);
-	const [totalVotesYes, setTotalVotesYes] = useState(0);
-	const [totalVotesNo, setTotalVotesNo] = useState(0);
+  const [provider, setProvider] = useState(null);
+  const [signer, setSigner] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [totalVotesYes, setTotalVotesYes] = useState(0);
+  const [totalVotesNo, setTotalVotesNo] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
-	useEffect(() => {
-	const init = async () => {
-		try {
-			if (typeof window.ethereum !== 'undefined') {
-			// Connect to Ethereum
-			const provider = new ethers.BrowserProvider(window.ethereum);
-			const signer = await provider.getSigner();
-			const contract = new ethers.Contract(
-				YesNoContract.address,
-				YesNoContract.abi,
-				signer
-			);
-			
-			setProvider(provider);
-			setSigner(signer);
-			setContract(contract);
+  // Monad Testnet network data
+  const monadTestnet = {
+    chainId: "0x279F", // 10143 in hexadecimal
+    chainName: "Monad Testnet",
+    nativeCurrency: {
+      name: "MON",
+      symbol: "MON",
+      decimals: 18,
+    },
+    rpcUrls: ["https://testnet-rpc.monad.xyz"],
+    blockExplorerUrls: ["https://testnet.monadexplorer.com"],
+  };
 
-			// Fetch initial vote counts
-			const yesVotes = await contract.getTotalVotes(1);
-			const noVotes = await contract.getTotalVotes(2);
-			setTotalVotesYes(yesVotes.toNumber());
-			setTotalVotesNo(noVotes.toNumber());
-			} else {
-				console.error("Ethereum object doesn't exist!");
-			}
-			} catch (error) {
-				console.error("Error initializing contract:", error);
-			}
-		};
+  useEffect(() => {
+    const init = async () => {
+      try {
+        if (typeof window.ethereum !== "undefined") {
+          // Connect to Ethereum
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(
+            YesNoContract.address,
+            YesNoContract.abi,
+            signer
+          );
 
-		init();
-	}, []);
+          setProvider(provider);
+          setSigner(signer);
+          setContract(contract);
 
-	const vote = async (variantId) => {
-	if (!contract) return;
+          // Fetch initial vote counts
+          const yesVotes = await contract.getTotalVotes(1);
+          const noVotes = await contract.getTotalVotes(2);
+          setTotalVotesYes(yesVotes.toString());
+          setTotalVotesNo(noVotes.toString());
 
-	try {
-		const tx = await contract.vote(variantId);
-		await tx.wait();
+          // Check if the user is on the correct network
+          const network = await provider.getNetwork();
+          if (Number(network.chainId) !== Number(monadTestnet.chainId)) {
+            alert("Please switch to the Monad Testnet to vote.");
+            await switchToMonadTestnet();
+          }
+        } else {
+          console.error("Ethereum object doesn't exist!");
+        }
+      } catch (error) {
+        console.error("Error initializing contract:", error);
+      }
+    };
 
-		// Update total votes after voting
-		const yesVotes = await contract.getTotalVotes(1);
-		const noVotes = await contract.getTotalVotes(2);
-		setTotalVotesYes(yesVotes.toNumber());
-		setTotalVotesNo(noVotes.toNumber());
-		} catch (error) {
-		console.error("Error voting:", error);
-		}
-	};
+    init();
+  }, []);
 
+  // Function to switch to Monad Testnet
+  const switchToMonadTestnet = async () => {
+    try {
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [monadTestnet],
+      });
+    } catch (error) {
+      console.error("Error switching to Monad Testnet:", error);
+    }
+  };
 
-	return(
-		<div class="wrap_yesno py-5">
-			<div className="d-flex justify-content-center">
-				<button onClick={() => vote(1)} className='me-4 btn-y button'>YES</button>
-				<button onClick={() => vote(2)} className='ms-4 btn-n button'>NO</button>
-			</div>
-			<div className="mt-3">
-				<p className='hide'>Total YES Votes: {totalVotesYes}</p>
-        		<p className='hide'>Total NO Votes: {totalVotesNo}</p>
-			</div>
-		</div>
-	);
+  const vote = async (variantId) => {
+    if (!contract) return;
+
+    try {
+      const tx = await contract.vote(variantId);
+      await tx.wait();
+
+      // Update total votes after voting
+      const yesVotes = await contract.getTotalVotes(1);
+      const noVotes = await contract.getTotalVotes(2);
+      setTotalVotesYes(yesVotes.toString());
+      setTotalVotesNo(noVotes.toString());
+
+      // Show the vote result and modal
+      document.getElementById("vote_result").classList.remove("hide");
+      setShowModal(true); // Show the modal
+    } catch (error) {
+      console.error("Error voting:", error);
+    }
+  };
+
+  return (
+    <div className="wrap_yesno py-5">
+      <div className="d-flex justify-content-center">
+        <button onClick={() => vote(1)} className="me-4 btn-y button">
+          YES
+        </button>
+        <button onClick={() => vote(2)} className="ms-4 btn-n button">
+          NO
+        </button>
+      </div>
+      <div id="vote_result" className="hide mt-3">
+        <center>
+          <p>Total YES Votes: {totalVotesYes}</p>
+          <p>Total NO Votes: {totalVotesNo}</p>
+        </center>
+      </div>
+
+      {/* Modal for successful vote */}
+      {showModal && (
+        <div className="modal">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Success!</h5>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={() => setShowModal(false)}
+                >
+                  &times;
+                </button>
+              </div>
+              <div className="modal-body">
+                <h1>You are voted! It is cool!</h1>
+                <button className="btn btn-primary">Share at x.com now!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Voting;
