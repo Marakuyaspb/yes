@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WalletConnect from "./WalletConnect/WalletConnect.js";
 import Voting from "./Voting.js";
@@ -7,6 +7,35 @@ import Footer from "./Footer/Footer.js";
 
 
 function App() {
+
+  const [isConnected, setIsConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [showWalletModal, setShowWalletModal] = useState(false);
+
+
+  const handleConnect = async () => {
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setIsConnected(true);
+        setWalletAddress(accounts[0]);
+        setShowWalletModal(false);
+      } catch (error) {
+        console.error("Error connecting wallet:", error);
+      }
+    } else {
+      console.error("Ethereum object doesn't exist!");
+    }
+  };
+
+
+  const handleDisconnect = () => {
+    setIsConnected(false);
+    setWalletAddress("");
+  };
+
 
   const interBubbleRef = useRef(null);
 
@@ -62,9 +91,21 @@ function App() {
       </div>
 
 
-      <WalletConnect />
 
-      <Voting />
+      <WalletConnect
+        isConnected={isConnected}
+        walletAddress={walletAddress}
+        onConnect={handleConnect}
+        onDisconnect={handleDisconnect}
+        showWalletModal={() => setShowWalletModal(true)}
+        setShowWalletModal={setShowWalletModal}
+        showWalletModalState={showWalletModal}
+      />
+
+      <Voting 
+        isConnected={isConnected}
+        showWalletModal={() => setShowWalletModal(true)}
+      />
 
       <Footer />
       
