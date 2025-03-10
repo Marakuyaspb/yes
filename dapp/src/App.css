@@ -597,37 +597,43 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  background-color: rgba(255, 165, 0, 0.5);
 }
 
 .modal-dialog {
-  background: white;
+  position: fixed;
+  top: 20%;
+  background: rgba(255,255,255,.3);
   padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 100%;
+  border-radius: 20px;
+  width: 90%;
+
+  -webkit-box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
+
 
 .modal-title {
   margin: 0;
 }
 
-.close {
+.close_success {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 2em;
+  font-weight: 300;
   cursor: pointer;
 }
 

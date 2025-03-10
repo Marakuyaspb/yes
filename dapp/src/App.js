@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import WalletConnect from "./WalletConnect/WalletConnect.js";
+import WalletConnect from "./Interactions/WalletConnect.js";
 import Voting from "./Voting.js";
 import Footer from "./Footer/Footer.js";
 

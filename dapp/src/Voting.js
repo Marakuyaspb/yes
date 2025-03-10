@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ethers } from "ethers";
 import { YesNoContract } from "./contractConfig";
+import Share from "./Interactions/Share"; 
+
+
 
 const Voting = ({ isConnected, showWalletModal }) => {
   const [provider, setProvider] = useState(null);
@@ -93,7 +96,7 @@ const Voting = ({ isConnected, showWalletModal }) => {
 
       setIsLoading(false);
       document.getElementById("vote_result").classList.remove("hide");
-      setShowModal(true); // Show success modal
+      setShowModal(true); 
     } catch (error) {
       console.error("Error voting:", error);
       setIsLoading(false);
@@ -138,24 +141,27 @@ const Voting = ({ isConnected, showWalletModal }) => {
       </div>
 
       {showModal && (
-        <div className="modal">
+        <div className="modal" style={{ display: "block", backgroundColor: "rgba(255, 165, 0, 0.3)" }}>
           <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Success!</h5>
-                <button
-                  type="button"
-                  className="close"
-                  onClick={() => setShowModal(false)}
-                >
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body">
-                <h1>You are voted! It is cool!</h1>
-                <button className="btn btn-primary">Share at x.com now!</button>
-              </div>
-            </div>
+            
+          <div className="d-flex flex-row-reverse">      
+			<button
+			  type="button"
+			  className="close_success"
+			  onClick={() => setShowModal(false)}
+			>
+			  &times;
+			</button>
+          </div>
+
+          <div className="modal-body">
+            <h3>Would you like to share </h3>
+            <h1>what question you were answering</h1>
+            <h3 className='mb-5'>when you clicked the button?</h3>
+            <Share />
+          </div>
+
+            
           </div>
         </div>
       )}
