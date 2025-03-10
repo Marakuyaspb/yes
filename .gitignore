@@ -2,11 +2,14 @@ yesno/.env
 db.sqlite3
 
 dapp/node_modules/*
+contracts/*
 
 static/admin/*
 static/bootstrap-5.0.2-dist/*
 static/web3.min.js
 static/ethers.min.js
+
+
 
 vote/migrations/*
 vote/__pycache__/*

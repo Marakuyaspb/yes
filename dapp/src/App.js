@@ -65,7 +65,7 @@ function App() {
       <WalletConnect />
 
       <Voting />
-      
+
       <Footer />
       
     </div>

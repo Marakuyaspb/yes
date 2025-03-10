@@ -1,8 +1,15 @@
 from rest_framework import serializers
-from .models import Voting
+from .models import Web3User, Voting
 
-class VotesSerializer(serializers.ModelSerializer):
 
+
+class Web3UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Student 
-        fields = ('id', 'voice', 'web3user', 'create')
+        model = Web3User 
+        fields = '__all__'
+
+
+class VotingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Voting 
+        fields = '__all__'

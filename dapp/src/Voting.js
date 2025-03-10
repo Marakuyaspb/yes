@@ -10,6 +10,7 @@ const Voting = () => {
   const [totalVotesYes, setTotalVotesYes] = useState(0);
   const [totalVotesNo, setTotalVotesNo] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // State for spinner
 
   // Monad Testnet network data
   const monadTestnet = {
@@ -80,6 +81,7 @@ const Voting = () => {
     if (!contract) return;
 
     try {
+      setIsLoading(true); // Show spinner
       const tx = await contract.vote(variantId);
       await tx.wait();
 
@@ -89,24 +91,49 @@ const Voting = () => {
       setTotalVotesYes(yesVotes.toString());
       setTotalVotesNo(noVotes.toString());
 
-      // Show the vote result and modal
+      // Hide spinner and show results
+      setIsLoading(false);
       document.getElementById("vote_result").classList.remove("hide");
       setShowModal(true); // Show the modal
     } catch (error) {
       console.error("Error voting:", error);
+      setIsLoading(false); // Hide spinner in case of error
     }
   };
 
   return (
     <div className="wrap_yesno py-5">
-      <div className="d-flex justify-content-center">
-        <button onClick={() => vote(1)} className="me-4 btn-y button">
+      <div className="d-flex justify-content-center position-relative">
+        {/* Voting Buttons */}
+        <button
+          onClick={() => vote(1)}
+          className="me-4 btn-y button"
+          disabled={isLoading} // Disable buttons while loading
+        >
           YES
         </button>
-        <button onClick={() => vote(2)} className="ms-4 btn-n button">
+        <button
+          onClick={() => vote(2)}
+          className="ms-4 btn-n button"
+          disabled={isLoading} // Disable buttons while loading
+        >
           NO
         </button>
+
+        {/* Spinner */}
+        {isLoading && (
+          <div
+            className="position-absolute top-50 start-50 translate-middle"
+            style={{ zIndex: 1000 }}
+          >
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Vote Result */}
       <div id="vote_result" className="hide mt-3">
         <center>
           <p>Total YES Votes: {totalVotesYes}</p>

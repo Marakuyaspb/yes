@@ -1,21 +1,31 @@
 import os
+import sqlite3
+import json
 from django.conf import settings
 from django.utils import timezone
 from django.shortcuts import render
-
 from django.shortcuts import render
 from django.db import connection
 from django.db.models import Count
+
 from .models import Web3User, Voting
 from .forms import VotingForm
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-import sqlite3
-import json
+from rest_framework import viewsets
+from .serializers import Web3UserSerializer, VotingSerializer
 
 
+
+class Web3UserViewSet(viewsets.ModelViewSet):
+	queryset = Web3User.objects.all()
+	serializer_class = Web3UserSerializer
+
+class VotingViewSet(viewsets.ModelViewSet):
+	queryset = Voting.objects.all()
+	serializer_class = VotingSerializer
 
 
 def dapp(request):
