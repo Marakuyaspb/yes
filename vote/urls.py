@@ -5,19 +5,18 @@ from django.conf.urls.static import static
 from vote import views
 
 from rest_framework.routers import DefaultRouter
-from vote.views import Web3UserViewSet, VotingViewSet
+from .views import Web3UserListCreate, ConnectListCreate, VotingListCreate
 
 app_name = 'vote'
 
-
-router = DefaultRouter()
-router.register(r'web3users', Web3UserViewSet)
-router.register(r'votings', VotingViewSet)
 
 
 urlpatterns = [
     path('', views.index, name = 'index'),
     path('about/', views.about, name = 'about'),
     path('howwas/', views.howwas, name = 'howwas'),
-    path('api/', include(router.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    path('web3users/', Web3UserListCreate.as_view(), name='web3user-list-create'),
+    path('connects/', ConnectListCreate.as_view(), name='connect-list-create'),
+    path('votings/', VotingListCreate.as_view(), name='voting-list-create'),
+]

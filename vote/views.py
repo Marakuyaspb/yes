@@ -8,24 +8,25 @@ from django.shortcuts import render
 from django.db import connection
 from django.db.models import Count
 
-from .models import Web3User, Voting
-from .forms import VotingForm
+from rest_framework import generics
 
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-
-from rest_framework import viewsets
-from .serializers import Web3UserSerializer, VotingSerializer
+from .models import Web3User, Connect, Voting
+from .serializers import Web3UserSerializer, ConnectSerializer, VotingSerializer
 
 
 
-class Web3UserViewSet(viewsets.ModelViewSet):
-	queryset = Web3User.objects.all()
-	serializer_class = Web3UserSerializer
+class Web3UserListCreate(generics.ListCreateAPIView):
+    queryset = Web3User.objects.all()
+    serializer_class = Web3UserSerializer
 
-class VotingViewSet(viewsets.ModelViewSet):
-	queryset = Voting.objects.all()
-	serializer_class = VotingSerializer
+class ConnectListCreate(generics.ListCreateAPIView):
+    queryset = Connect.objects.all()
+    serializer_class = ConnectSerializer
+
+class VotingListCreate(generics.ListCreateAPIView):
+    queryset = Voting.objects.all()
+    serializer_class = VotingSerializer
+    
 
 
 def dapp(request):
