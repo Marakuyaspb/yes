@@ -13,7 +13,10 @@ const Voting = ({ isConnected, showWalletModal }) => {
   const [totalVotesYes, setTotalVotesYes] = useState(0);
   const [totalVotesNo, setTotalVotesNo] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [showReminder, setShowReminder] = useState(false); 
   const [isLoading, setIsLoading] = useState(false);
+  const [userAccount, setUserAccount] = useState("");
+
 
   // Monad Testnet network data
   const monadTestnet = {
@@ -43,6 +46,12 @@ const Voting = ({ isConnected, showWalletModal }) => {
           setProvider(provider);
           setSigner(signer);
           setContract(contract);
+
+
+          const address = await signer.getAddress();
+          setUserAccount(address);
+
+
 
           const yesVotes = await contract.getTotalVotes(1);
           const noVotes = await contract.getTotalVotes(2);
@@ -78,7 +87,8 @@ const Voting = ({ isConnected, showWalletModal }) => {
 
   const vote = async (variantId) => {
     if (!isConnected) {
-      showWalletModal(); // Show wallet connection modal
+    	console.log("Wallet is disconnected. Showing reminder modal."); 
+      setShowReminder(true);
       return;
     }
 
@@ -109,14 +119,14 @@ const Voting = ({ isConnected, showWalletModal }) => {
         <button
           onClick={() => vote(1)}
           className="me-4 btn-y button"
-          disabled={!isConnected || isLoading}
+          disabled={isLoading}
         >
           YES
         </button>
         <button
           onClick={() => vote(2)}
           className="ms-4 btn-n button"
-          disabled={!isConnected || isLoading}
+          disabled={isLoading}
         >
           NO
         </button>
@@ -144,27 +154,46 @@ const Voting = ({ isConnected, showWalletModal }) => {
         <div className="modal" style={{ display: "block", backgroundColor: "rgba(255, 165, 0, 0.3)" }}>
           <div className="modal-dialog">
             
-          <div className="d-flex flex-row-reverse">      
-			<button
-			  type="button"
-			  className="close_success"
-			  onClick={() => setShowModal(false)}
-			>
-			  &times;
-			</button>
-          </div>
+	          <div className="d-flex flex-row-reverse">      
+				<button
+				  type="button"
+				  className="close_success"
+				  onClick={() => setShowModal(false)}
+				>
+				  &times;
+				</button>
+	          </div>
 
-          <div className="modal-body">
-            <h3>Would you like to share </h3>
-            <h1>what question you were answering</h1>
-            <h3 className='mb-5'>when you clicked the button?</h3>
-            <Share />
-          </div>
+	          <div className="modal-body">
+	            <h3>Would you like to share </h3>
+	            <h1>what question you were answering</h1>
+	            <h3 className='mb-5'>when you clicked the button?</h3>
 
-            
+	            <Share userAccount={userAccount} />
+
+	          </div>
           </div>
         </div>
       )}
+
+
+      {showReminder && (
+        <div className="modal" style={{ display: "block", backgroundColor: "rgba(255, 165, 0, 0.5)" }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+                <button
+                  type="button"
+                  className="close_success"
+                  onClick={() => setShowReminder(false)}
+                >
+                  &times;
+                </button>
+                <h2>Connect the wallet, please!</h2>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
