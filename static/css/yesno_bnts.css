@@ -1,6 +1,6 @@
-  /*BTN-YES*/
+/*BTN-YES*/
 
-  .btn-y {
+.btn-y {
   min-width: 200px;
   min-height: 90px;
   display: inline-flex;
@@ -26,7 +26,7 @@
   }
 
 .btn-y::before {
-content: '';
+  content: '';
   border-radius: 1000px;
   min-width: 196px;
   min-height: 86px;

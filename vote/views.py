@@ -29,63 +29,31 @@ class VotingListCreate(generics.ListCreateAPIView):
     
 
 
-def dapp(request):
-	if request.method == 'POST':
-		voice = request.POST.get('voice')
-		create = timezone.now()
-
-		voting_form = VotingForm({'voice': voice, 'create': create})
-
-		if voting_form.is_valid():
-			instance = voting_form.save(commit=False)
-			instance.voice = voice
-			instance.create = create
-			instance.save()
-			print("Form saved successfully!")
-		else:
-			print("Form validation errors:", voting_form.errors)
-	else:
-		voting_form = VotingForm()
 	
-	return render(request, 'vote/dapp.html', {'voting_form': voting_form})
+def index(request):
+	return render(request, 'vote/index.html')
 
 
 def about(request):
 	return render(request, 'vote/about.html')
-	
-
 
 
 def howwas(request):
-    # Путь к базе данных SQLite
     db_path = os.path.join(settings.BASE_DIR, 'db.sqlite3')
-    
-    # Подключение к базе данных
     conn = sqlite3.connect(db_path)
     
-    # Чтение данных из таблицы vote_voting
     query = "SELECT voice FROM vote_voting"
     cursor = conn.cursor()
     cursor.execute(query)
     
-    # Получение всех голосов
     votes = cursor.fetchall()
     conn.close()
 
-    # Подсчет голосов
     vote_counts = {
         'Yes': sum(1 for v in votes if v[0] == True),
         'No': sum(1 for v in votes if v[0] == False)
     }
 
-    # Преобразование данных в формат JSON для передачи в шаблон
     data = json.dumps(vote_counts)
 
     return render(request, 'vote/howwas.html', {'data': data})
-
-  
-
-def index(request):
-	return render(request, 'vote/index.html')
-
-	
