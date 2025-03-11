@@ -145,9 +145,18 @@ const Voting = ({ isConnected, showWalletModal }) => {
             className="position-absolute top-50 start-50 translate-middle"
             style={{ zIndex: 1000 }}
           >
-            <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+
+
+            <div class="spinner-box">
+              <div class="leo-border-1">
+                <div class="leo-core-1"></div>
+              </div> 
+              <div class="leo-border-2">
+                <div class="leo-core-2"></div>
+              </div> 
             </div>
+
+
           </div>
         )}
       </div>
