@@ -152,49 +152,62 @@ const Voting = ({ isConnected, showWalletModal }) => {
         )}
       </div>
 
-      <div id="vote_result" className="hide mt-3">
-        <center>
-          <p>Total YES Votes: {totalVotesYes}</p>
-          <p>Total NO Votes: {totalVotesNo}</p>
-        </center>
+      <div id="vote_result" className="hide mt-5">
+     	<div className="d-flex justify-content-center">
+        
+          <h4 className="me-5">Total YES: {totalVotesYes}</h4>
+          <h4 className="ps-3">Total NO: {totalVotesNo}</h4>
+        </div>
       </div>
 
       {showModal && (
         <div className="modal" style={{ display: "block", backgroundColor: "rgba(255, 165, 0, 0.3)" }}>
-          <div className="modal-dialog">
-            <div className="d-flex flex-row-reverse">
-              <button
-                type="button"
-                className="close_success"
-                onClick={() => setShowModal(false)}
-              >
-                &times;
-              </button>
+          	<div className="modal-dialog">
+	          	<div className="modal-content">
+	            
+	              	<button
+	                type="button"
+	                className="close_success"
+	                onClick={() => setShowModal(false)}
+	              	>
+	                &times;
+	              	</button>
+
+	            	<div className="modal-body">
+						<h3>Would you like to share </h3>
+						<h1>what question you were answering</h1>
+						<h3 className="mb-5">when you clicked the button?</h3>
+						<Share userAccount={userAccount} />
+		            </div>
+		        </div>
+
             </div>
-            <div className="modal-body">
-              <h3>Would you like to share </h3>
-              <h1>what question you were answering</h1>
-              <h3 className="mb-5">when you clicked the button?</h3>
-              <Share userAccount={userAccount} />
-            </div>
-          </div>
         </div>
       )}
 
+
       {showReminder && (
         <div className="modal" style={{ display: "block", backgroundColor: "rgba(255, 165, 0, 0.5)" }}>
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <button
-                type="button"
-                className="close_success"
-                onClick={() => setShowReminder(false)}
-              >
-                &times;
-              </button>
-              <h2>Connect the wallet, please!</h2>
-            </div>
-          </div>
+            <div className="modal-dialog">        
+              
+	            <div className="modal-content">
+			        <button
+			          type="button"
+			          className="close_success"
+			          onClick={(e) => {
+			            e.stopPropagation();
+			            console.log("Closing reminder modal"); // Debugging
+			            setShowReminder(false);
+			          }}
+			        >
+			          &times;
+			        </button>
+			        <div className="modal-body">
+			          <h2>Connect the wallet, please!</h2>
+			        </div>
+		      	</div>
+		      	
+          	</div>
         </div>
       )}
     </div>

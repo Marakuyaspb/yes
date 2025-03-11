@@ -605,27 +605,34 @@ a {
 }
 
 .modal-dialog {
-  position: fixed!important;
+  position: relative;
   top: 20%;
   background: rgba(255,255,255,.3);
   padding: 20px;
   border-radius: 20px;
-  width: 90%!important;
+
   -webkit-box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 36px -24px rgba(0,0,0,0.75);
 }
 
+
+.modal-content{
+  border:none!important;
+  background-color: transparent!important;
+}
+.modal-body{
+  padding: 2.4em 1em 1em 1em!important;
+}
 .close_success {
-  right: 16%;
-  position: fixed;
+  position: absolute;
+  right: 0px; 
   background: none;
   border: none;
+  color: rgb(33, 37, 41);
   font-size: 2em;
   font-weight: 300;
   cursor: pointer;
-}
-
-.modal-body {
-  padding-top: 10px;
+  z-index: 1059;
+  padding: 0 20px;
 }
