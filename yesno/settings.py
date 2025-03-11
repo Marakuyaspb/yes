@@ -1,8 +1,7 @@
-from pathlib import Path
 import os, sys
-from dotenv import load_dotenv
+from pathlib import Path
 from django.contrib.messages import constants as messages
-
+from dotenv import load_dotenv
 
 
 env_path = Path('.') / '.env'
@@ -14,7 +13,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -32,6 +31,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

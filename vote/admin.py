@@ -6,8 +6,9 @@ from .models import Web3User, Voting
 
 @admin.register(Web3User)
 class Web3UserAdmin(admin.ModelAdmin):
-    list_display = ['address']
-    readonly_fields = ['address']
+	list_display = ['address']
+	readonly_fields = ['address']
+
 
 
 @admin.register(Voting)

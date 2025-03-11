@@ -7,27 +7,27 @@ export const createWeb3User = async (address) => {
     const response = await axios.post(`${API_BASE_URL}/web3users/`, { address });
     return response.data;
   } catch (error) {
-    console.error("Error creating Web3User:", error);
+    console.error("Error creating Web3User:", error.response ? error.response.data : error);
     throw error;
   }
 };
 
-export const createConnect = async (web3user) => {
+export const createConnect = async (address) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/connects/`, { web3user });
+    const response = await axios.post(`${API_BASE_URL}/connects/`, { address });
     return response.data;
   } catch (error) {
-    console.error("Error creating Connect:", error);
+    console.error("Error creating Connect:", error.response ? error.response.data : error);
     throw error;
   }
 };
 
-export const createVoting = async (voice, web3user) => {
+export const createVoting = async (voice, address) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/votings/`, { voice, web3user });
+    const response = await axios.post(`${API_BASE_URL}/votings/`, { voice, address });
     return response.data;
   } catch (error) {
-    console.error("Error creating Voting:", error);
+    console.error("Error creating Voting:", error.response ? error.response.data : error);
     throw error;
   }
 };
