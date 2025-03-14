@@ -163,7 +163,7 @@ a {
     display: inline-flex;
     font-family: 'Roboto', sans-serif;
     font-size: 2.4em;
-    margin: 0 .4em;
+    margin: 0 1.2em;
     border-radius: 62.5em;
   }
 
@@ -726,7 +726,7 @@ a {
   background-color: transparent!important;
 }
 .modal-body{
-  padding: 2.4em 1em 1em 1em!important;
+  padding: 2.4em 1em!important;
 }
 .close_success {
   position: absolute;

@@ -8,7 +8,7 @@ static/admin/*
 static/bootstrap-5.0.2-dist/*
 static/web3.min.js
 static/ethers.min.js
-
+static/swiper/*
 
 
 vote/migrations/*

@@ -212,7 +212,7 @@ const Voting = ({ isConnected, showWalletModal }) => {
 			          &times;
 			        </button>
 			        <div className="modal-body">
-			          <h2 className='we_300'>Connect the wallet, please!</h2>
+			          <h3 className='we_300'>Connect the wallet, please!</h3>
 			        </div>
 		      	</div>
 		      	
