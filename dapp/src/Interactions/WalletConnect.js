@@ -19,7 +19,7 @@ function WalletConnect({
         <div>
           <button
             id="show"
-            className={isConnected ? "hide button_light" : "block button_light we_300"}
+            className={isConnected ? "hide button_dark" : "block button_dark we_300"}
             onClick={showWalletModal}
           >
             {isConnected ? "Disconnect" : "Connect wallet"}
@@ -27,7 +27,7 @@ function WalletConnect({
 
           <button
             id="disconnect"
-            className={isConnected ? "block button_light" : "hide button_light we_300"}
+            className={isConnected ? "block button_dark" : "hide button_dark we_300"}
             onClick={onDisconnect}
           >
             {isConnected ? "Disconnect" : "Connect wallet"}

@@ -123,18 +123,18 @@ const Voting = ({ isConnected, showWalletModal }) => {
   };
 
   return (
-    <div className="wrap_yesno py-5">
+    <div className="wrap_yesno pt-5">
       <div className="d-flex justify-content-center position-relative">
         <button
           onClick={() => vote(1)}
-          className="me-4 btn-y button"
+          className="btn-y btn-vote button"
           disabled={isLoading}
         >
           YES
         </button>
         <button
           onClick={() => vote(2)}
-          className="ms-4 btn-n button"
+          className="btn-n btn-vote button"
           disabled={isLoading}
         >
           NO
@@ -183,10 +183,10 @@ const Voting = ({ isConnected, showWalletModal }) => {
 	              	</button>
 
 	            	<div className="modal-body">
-						<h3>Would you like to share </h3>
-						<h1>what question you were answering</h1>
-						<h3 className="mb-5">when you clicked the button?</h3>
-						<Share userAccount={userAccount} />
+      						<h3>Would you like to share </h3>
+      						<h1>what question you were answering</h1>
+      						<h3 className="mb-5">when you clicked the button?</h3>
+      						<Share userAccount={userAccount} />
 		            </div>
 		        </div>
 
@@ -212,7 +212,7 @@ const Voting = ({ isConnected, showWalletModal }) => {
 			          &times;
 			        </button>
 			        <div className="modal-body">
-			          <h2>Connect the wallet, please!</h2>
+			          <h2 className='we_300'>Connect the wallet, please!</h2>
 			        </div>
 		      	</div>
 		      	

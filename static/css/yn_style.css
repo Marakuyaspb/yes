@@ -13,7 +13,25 @@ a {
 }
 
 
+.we_200{
+    font-weight: 200;
+}
+.we_300{
+    font-weight: 300;
+}
+.we_400{
+    font-weight: 400;
+}
+.we_500{
+    font-weight: 500;
+}
+.we_600{
+    font-weight: 600;
+}
 
+.copyright{
+  font-size: .8em;
+}
 
 .wrap_yesno {
   margin: -30em 0 0 0;
@@ -43,8 +61,14 @@ a {
 }
 
 .footer_link{
-  margin: 1.4em;
-  color: #000;
+  margin: 1.2em;
+  color: #212529;
+  font-weight: 400;
+}
+
+.social_icon{
+  width: 2em;
+  margin: 0 .3em;
 }
 
 .hide {
@@ -55,18 +79,36 @@ a {
   display: block;  
 }
 
+.button_dark {
+  background: rgb(33, 37, 41);
+  border: 1px rgb(33, 37, 41) solid;
+  border-radius: 8px!important;
+  box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
+  min-width: 7em;
+  margin: 1em auto .5em auto!important;
+  padding: .3em .8em;
+  color: #b4dc8d;
+}
+.button_dark:hover{
+  background: rgb(41, 44, 48);
+  border: 1px rgb(41, 44, 48) solid;
+}
+
 
 
 .button_light {
-  background: rgb(251, 251, 251);
-  border: 1px #f1f5f7 solid;
+  background: rgb(118, 154, 59);
+  border: 1px rgb(118, 154, 59) solid;
   border-radius: 8px!important;
   box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
   min-width: 7em;
   margin: 1em auto .5em auto!important;
   padding: .3em .8em;
 }
-
+.button_light:hover{
+  background: rgb(126, 165, 60);
+  border: 1px rgb(126, 165, 60) solid;
+}
 
 #parable {
     height: 80vh;
