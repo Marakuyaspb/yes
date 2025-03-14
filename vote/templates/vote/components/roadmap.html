@@ -13,24 +13,31 @@
 		flex-direction: column;
 	}
 
-	.title {
-		font-size: 38px;
-		color: #212529;
-		font-weight: 800;
-	}
-
-
 	.timeline {
 		width: 100%;
 		background: transparent;
 	}
 
-	.timeline .swiper-container {
-		height: 500px;
-		width: 100%;
-		position: relative;
-	}
 
+
+	/* DESCTOP */
+
+	@media (min-width: 811px) {
+		.timeline .swiper-container {
+			height: 500px;
+			width: 100%;
+			position: relative;
+		}
+	}
+	/* PHONE */
+
+	@media (max-width: 810px) {
+		.timeline .swiper-container {
+			height:300px;
+			width: 100%;
+			position: relative;
+		}
+	}
 	.timeline .swiper-wrapper {
 		transition: 2s cubic-bezier(0.68, -0.4, 0.27, 1.34) 0.2s;
 	}
@@ -70,19 +77,20 @@
 
 	.timeline .swiper-slide .timeline-year {
 		display: block;
-		font-size: 1.1em;
-		margin-bottom: 50px;
+		font-size: 1em;
+		margin-bottom: 1em;
 		transform: translate3d(20px, 0, 0);
 		color: #212529;
-		font-weight: 300;
+		font-weight: 500;
 		opacity: 0;
 		transition: 0.2s ease 0.4s;
 	}
 
 	.timeline .swiper-slide .timeline-title {
 		font-weight: 400;
-		font-size: 1.2em;
-		margin: 0 0 1.2em;
+		font-size: 1.6em;
+		margin: 0;
+		color: #b4dc8d;
 		opacity: 0;
 		transform: translate3d(20px, 0, 0);
 		transition: 0.2s ease 0.5s;
@@ -218,7 +226,7 @@
 		}
 
 		.timeline .swiper-slide .timeline-title {
-			font-size: 2em;
+			font-size: 1.8em;
 			color: #b4dc8d;
 			margin: 0;
 		}
@@ -230,7 +238,7 @@
 		.timeline .swiper-button-prev {
 			top: 15%;
 			left: auto;
-			right: 15%;
+			right: 17%;
 			transform: rotate(90deg) translate(0, 10px);
 		}
 
@@ -241,7 +249,7 @@
 		.timeline .swiper-button-next {
 			top: auto;
 			bottom: 15%;
-			right: 15%;
+			right: 17%;
 			transform: rotate(90deg) translate(0, 10px);
 		}
 
@@ -265,40 +273,47 @@
 </style>
 
 
-<div class='pt-5 pb-3'>
-	<div class="container_swipe">
-	    <h1 class="">Roadmap</h1>
-	    <div class="timeline">
-	        <div class="swiper-container">
-	            <div class="swiper-wrapper">
-	                <div class="swiper-slide" data-year="Stage&nbsp;I">
-	                    <div class="swiper-slide-content">
-	                        <span class="timeline-year"></span>
-	                        <h4 class="timeline-title">Testnet</h4>
-	                        <p class="timeline-text">Just voting</p>
-	                    </div>
-	                </div>
-	                <div class="swiper-slide" data-year="Stage&nbsp;II">
-	                    <div class="swiper-slide-content">
-	                        <span class="timeline-year"></span>
-	                        <h4 class="timeline-title">Airdrop</h4>
-	                        <p class="timeline-text">Active users will claim tokens</p>
-	                    </div>
-	                </div>
-	                <div class="swiper-slide" data-year="Stage&nbsp;III">
-	                    <div class="swiper-slide-content">
-	                        <span class="timeline-year"></span>
-	                        <h4 class="timeline-title">The Big Pool Lottery</h4>
-	                        <p class="timeline-text">Vote as minority and win</p>
-	                    </div>
-	                </div>
-	            </div>
+<div class='d-none d-lg-block d-xl-block d-xxl-block'><div class='pt-5'></div></div>
 
-	            <div class="swiper-pagination"></div>
-	        </div>
-	    </div>
-	</div>
+<div class="timeline-year d-block d-lg-none">
+	<h1>Roadmap</h1>
 </div>
+<div class="container_swipe">
+    <div class="timeline">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" data-year="Stage&nbsp;I">
+                    <div class="swiper-slide-content">
+                        <span class="timeline-year d-block d-lg-none">Stage I</span>
+                        <h4 class="timeline-title">Vote for fun</h4>
+                        <p class="timeline-text pt-3">Make transactions and have fun. Just take part in voting and share your questions on x.com. The most active users will receive project tokens.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-year="Stage&nbsp;II">
+                    <div class="swiper-slide-content">
+                        <span class="timeline-year d-block d-lg-none">Stage II</span>
+                        <h4 class="timeline-title">Tokens issuance & Airdrop</h4>
+                        <p class="timeline-text pt-3">The most active users will claim YES & NO tokens. We will account for interactions with the smart contract through the website's web interface and posts on x.com.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-year="Stage&nbsp;III">
+                    <div class="swiper-slide-content">
+                        <span class="timeline-year d-block d-lg-none">Stage III</span>
+                        <h4 class="timeline-title">The Big Pool Lottery</h4>
+                        <p class="timeline-text pt-3">YES and NO tokens can be bought for MON. Tokens will give access to lottery pools. Vote as minority and win.</p>
+                    </div>
+                </div>
+            </div>
+
+			<div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+			<div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="{% static 'swiper/swiper.min.js' %}"></script>
 <script type="text/javascript">
     var timelineSwiper = new Swiper ('.timeline .swiper-container', {

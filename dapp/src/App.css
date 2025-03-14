@@ -80,6 +80,9 @@ a {
   color: #212529;
   font-weight: 400;
 }
+.footer_link:hover{
+  color:rgb(41, 44, 48);
+}
 
 .copyright{
   font-size: .8em;
